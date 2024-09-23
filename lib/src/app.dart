@@ -12,6 +12,7 @@ import 'cubit/theme/theme_cubit.dart';
 import 'data/models/language_model.dart';
 
 class App extends StatelessWidget {
+
   const App({Key? key}) : super(key: key);
 
   @override

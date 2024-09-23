@@ -181,6 +181,7 @@ class HomePage extends StatelessWidget {
                                   fontFamily: "Varela"),
                             ),
                           ),
+
                           IconButton(
                             icon: const Icon(
                               Icons.add,
