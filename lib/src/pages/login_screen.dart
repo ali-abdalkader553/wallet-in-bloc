@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallet_task/src/cubit/theme/theme_cubit.dart';
 
 import '../cubit/signInCubit/sign_in_cubit.dart';
+import '../cubit/theme/theme_cubit.dart';
 import 'home_page.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                   if (state is SignInInitial) {
                     return ElevatedButton(
                       onPressed: () {
-                        cubit.signIn(context);
+                        // cubit.signIn(context);
                         cubitT.toggleTheme();
                       },
                       style: ElevatedButton.styleFrom(
@@ -84,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                         style: TextStyle(fontSize: 18),
                       ),
                     );
-                  } else if (state is SignInLoading) {
+                  } else  {
                     return ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
@@ -96,20 +96,9 @@ class LoginScreen extends StatelessWidget {
                         child: const Center(
                           child: CircularProgressIndicator(),
                         ));
-                  } else if (state is SignInFailure) {
-                    return ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(double.infinity, 50),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      child: const Text("You can not signin"),
-                    );
-                  } else {
-                    return HomePage();
                   }
+
+
                 },
               ),
             ],

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallet_task/src/data/models/language_model.dart';
-import 'package:wallet_task/src/utils/app_localization.dart';
 
 import '../cubit/languageCubit/language_cubit.dart';
 import '../cubit/theme/theme_cubit.dart';
 import '../data/datasource/static/data.dart';
+import '../data/models/language_model.dart';
+import '../utils/app_localization.dart';
+import '../utils/constants.dart';
 import '../utils/screen_size.dart';
 import '../widgets/add_button.dart';
 import '../widgets/credit_card.dart';
@@ -121,7 +122,7 @@ class HomePage extends StatelessWidget {
                                 return TextButton(
                                   child: Text(
                                     state.isEnglish ? "AR" : "EN",
-                                    style: TextStyle(color: Colors.black),
+                                    style: const TextStyle(color: Colors.black),
                                   ),
                                   onPressed: () {
                                     state.isEnglish = !state.isEnglish;
@@ -133,19 +134,28 @@ class HomePage extends StatelessWidget {
                                   },
                                 );
                               } else {
-                                print("testtttt");
-                                return Container(
-                                  height: 20,
-                                  width: 20,
-                                  color: Colors.black,
+                                return TextButton(
+                                  child: Text(
+                                    isEnglish ? "AR" : "EN",
+                                    style: const TextStyle(color: Colors.black),
+                                  ),
+                                  onPressed: () {
+                                    isEnglish = !isEnglish;
+                                    isEnglish
+                                        ? cubit.changelanguage(
+                                            LanguageEventsenum.ArabicLanguage)
+                                        : cubit.changelanguage(
+                                            LanguageEventsenum.EnglishLanguage);
+                                  },
                                 );
                               }
                             },
                           ),
                           IconButton(
                             icon: Icon(
-                              Icons.notifications_none,
-                              color: cubitT.isDark ? Colors.white : Colors.red,
+                              Icons.swap_horiz,
+                              color:
+                                  cubitT.isDark ? Colors.black : Colors.white,
                               size: 28,
                             ),
                             onPressed: () {
